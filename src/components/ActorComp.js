@@ -1,6 +1,5 @@
 import './ActorComp.css';
 import Actor from '../models/Actor';
-
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -13,7 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { InsertLinkRounded } from '@material-ui/icons';
+import { AccountTree, InsertLinkRounded } from '@material-ui/icons';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -39,28 +38,29 @@ const useStyles = makeStyles(theme => ({
     }
   }));
 
-function ActorComponent () {
+function ActorComponent (props) {
+    const {actor} = props;
+    const curActor = new Actor(actor);
     const classes = useStyles();
-    const actor = new Actor("Brad","Pitt","2000-01-31","https://m.media-amazon.com/images/M/MV5BMjA1MjE2MTQ2MV5BMl5BanBnXkFtZTcwMjE5MDY0Nw@@._V1_UX214_CR0,0,214,317_AL_.jpg","https://www.imdb.com/name/nm0000093/?ref_=nv_sr_srsg_6"); 
     return(
         <>
             <Card  className={classes.root} >
-                <CardHeader title={actor.fname + "  " + actor.lname} />
+                <CardHeader title={curActor.fname + "  " + curActor.lname} />
                 <CardActions disableSpacing>
                     <IconButton  className={classes.media} >
                         <FavoriteIcon/>
                     </IconButton>
                 </CardActions>
-                <a href={actor.linkIMDB} target="_blank">
+                <a href={curActor.linkIMDB} target="_blank">
                     <CardMedia className={classes.media}                 
                       style={{ height: "317px" , width: "214px"}}  
-                        image={actor.image}
-                        title={actor.fname + "  " + actor.lname}
+                        image={curActor.image}
+                        title={curActor.fname + "  " + curActor.lname}
                     />
                 </a>
                 <CardContent>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        Age {actor.age()}.
+                        {/* Age {curActor.age()}. */}
                     </Typography>
                 </CardContent>
             </Card>
