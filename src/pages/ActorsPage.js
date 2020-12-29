@@ -1,3 +1,4 @@
+import './ActorsPage.css';
 import ActorComponent from "../components/ActorComp";
 
 function ActorsPage (props)
@@ -8,10 +9,9 @@ function ActorsPage (props)
     actorsDisp.push( actors.map(actor => <ActorComponent  actor = {actor}/>));
 
     return (
-        <>
-        {actorsDisp}
-        </>
+        <div className="p-actor">
+            {actorsDisp}
+        </div>
     )
-
 }
 export default ActorsPage;

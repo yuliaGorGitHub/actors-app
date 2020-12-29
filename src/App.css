@@ -1,13 +1,18 @@
-.App {
+.p-App {
   text-align: center;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  height: 500px;
+  height: 600px;
   background-color: #282c34;
-
+  padding-top: 10px;
 }
 
-.App-link {
+/* .p-App-link {
   color: #61dafb;
+} */
+.sel {
+  margin: 0 5px 0 50px;
+  color: rgb(231, 69, 191);
 }

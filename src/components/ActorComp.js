@@ -45,7 +45,9 @@ function ActorComponent (props) {
     return(
         <>
             <Card  className={classes.root} >
-                <CardHeader title={curActor.fname + "  " + curActor.lname} />
+                <a href={curActor.linkIMDB} target="_blank" className="p-ac-a">
+                    <CardHeader title={curActor.fname + "  " + curActor.lname} />
+                </a>
                 <CardActions disableSpacing>
                     <IconButton  className={classes.media} >
                         <FavoriteIcon/>
@@ -60,7 +62,7 @@ function ActorComponent (props) {
                 </a>
                 <CardContent>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {/* Age {curActor.age()}. */}
+                        Age {curActor.age()}.
                     </Typography>
                 </CardContent>
             </Card>
