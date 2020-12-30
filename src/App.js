@@ -19,12 +19,12 @@ function App() {
   
   // filter
   var filteredAcArr =  actors.filter(function(actor) {
-    return (actor.fname.toLowerCase().includes(input) || actor.lname.toLowerCase().includes(input));   
+    return (actor.fname.toLowerCase().includes(input.toLowerCase()) || actor.lname.toLowerCase().includes(input.toLowerCase()));   
     });
 
   // sort 
   filteredAcArr.sort(function(a, b)
-   {
+  {
     if(sortby === "")
       return;
 
@@ -32,25 +32,20 @@ function App() {
     {
       return  (a.age() - b.age());
     }
-    else if (sortby === "fname")
-    {
-      var nameA = a.fname.toLowerCase(); // ignore upper and lowercase
-      var nameB = b.fname.toLowerCase(); // ignore upper and lowercase
-    }
     else
     {
-      var nameA = a.lname.toLowerCase(); // ignore upper and lowercase
-      var nameB = b.lname.toLowerCase(); // ignore upper and lowercase
+      var nameA = a[sortby].toLowerCase(); // ignore upper and lowercase
+      var nameB = b[sortby].toLowerCase(); // ignore upper and lowercase  
+      
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+  
+      return 0;  
     }
-
-    if (nameA < nameB) {
-      return -1;
-    }
-    if (nameA > nameB) {
-      return 1;
-    }
-
-    return 0;
   });
 
   return (
@@ -59,7 +54,7 @@ function App() {
         <input type="text" value={input} onChange={e=>setInput(e.target.value)}/>
         <label htmlFor="sort"  className="sel">Choose sorting type:</label>
         <select name="sort" onChange={e => setSort(e.target.value)}>
-        <option value="">Please select</option>
+        <option value="">not sorted</option>
           <option value="fname">First Name</option>
           <option value="lname">Last Name</option>
           <option value="age">Age</option>
